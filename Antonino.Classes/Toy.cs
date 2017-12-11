@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Antonino.Classes
 {
-    public class Product
+    public class Toy
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -12,7 +12,10 @@ namespace Antonino.Classes
         [BsonElement("name")]
         public string Name { get; set; }
 
-        [BsonElement("category")]
-        public string Category { get; set; }
+        [BsonElement("cost")]
+        public decimal Cost { get; set; }
+
+        [BsonElement("amount")]
+        public int Amount { get; set; }
     }
 }

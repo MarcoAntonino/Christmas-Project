@@ -4,15 +4,15 @@ namespace Antonino.Classes
 {
     public interface IDataBase
     {
-        bool InsertProduct(Product product);
 
-        Product GetProduct(string id);
+        bool UpdateOrder(string id, OrderStatus status);
 
-        IEnumerable<Product> GetAllProducts();
+        IEnumerable<Order> GetAllOrders();
 
-        bool UpdateProduct(Product product);
+        Order GetOrder(string id);
 
-        bool RemoveProduct(string id);
+        IEnumerable<Toy> GetAllToys();
 
+        User GetUser(string id);
     }
 }

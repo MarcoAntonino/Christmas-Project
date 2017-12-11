@@ -58,8 +58,11 @@
     <Compile Include="MongoConnection.cs" />
     <Compile Include="MongoDB.cs" />
     <Compile Include="MongoDBConfig.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Toy.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

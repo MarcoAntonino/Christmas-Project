@@ -15,63 +15,34 @@ namespace Antonino.Classes
             }
         }
 
-        public IEnumerable<Product> GetAllProducts()
+        public IEnumerable<Order> GetAllOrders()
         {
-            IMongoCollection<Product> productCollection = database.GetCollection<Product>("product");
-            return productCollection.Find(new BsonDocument()).ToList();
+            throw new NotImplementedException();
         }
 
-        public Product GetProduct(string id)
+        public IEnumerable<Toy> GetAllToys()
         {
-            IMongoCollection<Product> productCollection = database.GetCollection<Product>("product");
-            return productCollection.Find(_ => _.ID == id).FirstOrDefault();
+            throw new NotImplementedException();
         }
 
-        public bool InsertProduct(Product product)
+        public Order GetOrder(string id)
         {
-            IMongoCollection<Product> productCollection = database.GetCollection<Product>("product");
-            try
-            {
-                productCollection.InsertOne(product);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            throw new NotImplementedException();
         }
 
-        public bool RemoveProduct(string id)
+        public User GetUser(string id)
         {
-            IMongoCollection<Product> productCollection = database.GetCollection<Product>("product");
-            var filter = Builders<Product>.Filter.Eq("_id", ObjectId.Parse(id));
-            try
-            {
-                productCollection.DeleteOne(filter);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            throw new NotImplementedException();
         }
 
-        public bool UpdateProduct(Product product)
+        public bool UpdateOrder(Order product)
         {
-            IMongoCollection<Product> productCollection = database.GetCollection<Product>("product");
-            var filter = Builders<Product>.Filter.Eq("_id", ObjectId.Parse(product.ID));
-            var update = Builders<Product>.Update
-                .Set("name", product.Name)
-                .Set("category", product.Category);
-            try
-            {
-                productCollection.UpdateOne(filter, update);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateOrder(string id, OrderStatus status)
+        {
+            throw new NotImplementedException();
         }
     }
 }
