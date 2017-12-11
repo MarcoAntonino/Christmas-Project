@@ -25,7 +25,7 @@ namespace Antonino.Tests
 
             MockOrderController mockController = new MockOrderController(mock.Object) { };
 
-            mockController.UpdateNullId();
+            mockController.Update(null, 0);
         }
 
         [TestMethod]
@@ -35,9 +35,9 @@ namespace Antonino.Tests
             Mock<IDataBase> mock = new Mock<IDataBase>();
             mock.Setup(m => m.UpdateOrder(It.Is<string>(id => id == string.Empty), It.IsAny<OrderStatus>())).Throws<ArgumentException>();            
 
-            MockOrderController mockController = new MockOrderController(mock.Object) { };
+            MockOrderController mockController = new MockOrderController(mock.Object);
 
-            mockController.UpdateEmptyId();
+            mockController.Update(string.Empty, 0);
         }
 
         [TestMethod]
@@ -45,11 +45,11 @@ namespace Antonino.Tests
         public void Update_Order_Should_Throw_Exception_When_id_Is_Whitespaced()
         {
             Mock<IDataBase> mock = new Mock<IDataBase>();            
-            mock.Setup(m => m.UpdateOrder(It.Is<string>(id => id == " "), It.IsAny<OrderStatus>())).Throws<ArgumentException>();
+            mock.Setup(m => m.UpdateOrder(It.Is<string>(id => string.IsNullOrWhiteSpace(id) == true), It.IsAny<OrderStatus>())).Throws<ArgumentException>();
 
             MockOrderController mockController = new MockOrderController(mock.Object) { };
 
-            mockController.UpdateWhitespacedId();
+            mockController.Update("  ", 0);
         }
     }
 }

@@ -17,21 +17,9 @@ namespace Antonino.Tests.Mocks
             db = dbParam;
         }
 
-        public ActionResult UpdateNullId()
+        public ActionResult Update(string id, OrderStatus status)
         {
-            db.UpdateOrder(null, 0);
-            return View();
-        }
-
-        public ActionResult UpdateEmptyId()
-        {
-            db.UpdateOrder("", 0);
-            return View();
-        }
-
-        public ActionResult UpdateWhitespacedId()
-        {
-            db.UpdateOrder(" ", 0);
+            db.UpdateOrder(id, status);
             return View();
         }
     }
