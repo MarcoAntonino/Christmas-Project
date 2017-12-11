@@ -51,5 +51,17 @@ namespace Antonino.Tests
 
             mockController.Update("  ", 0);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Update_Order_Should_Throw_Exception_When_Status_Is_Out_Of_Range()
+        {
+            Mock<IDataBase> mock = new Mock<IDataBase>();
+            mock.Setup(m => m.UpdateOrder(It.IsAny<string>(), It.Is<OrderStatus>(s => s == (OrderStatus)(-1)))).Throws<ArgumentOutOfRangeException>();
+
+            MockOrderController mockController = new MockOrderController(mock.Object) { };
+
+            mockController.Update("  ", (OrderStatus)(- 1));
+        }
     }
 }
