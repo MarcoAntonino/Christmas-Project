@@ -13,6 +13,6 @@ namespace Antonino.Classes
 
         IEnumerable<Toy> GetAllToys();
 
-        User GetUser(string id);
+        User GetUser(User user);
     }
 }

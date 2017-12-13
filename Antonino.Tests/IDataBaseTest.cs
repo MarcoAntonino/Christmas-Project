@@ -127,41 +127,21 @@ namespace Antonino.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void GetUser_Should_Throw_Exception_When_id_Is_Null()
+        public void GetUser_Should_Throw_Exception_When_user_Is_Null()
         {
             Mock<IDataBase> mock = new Mock<IDataBase>();
-            mock.Setup(m => m.GetUser(It.Is<string>(id => id == null))).Throws<ArgumentNullException>();
+            mock.Setup(m => m.GetUser(It.Is<User>(user => user == null))).Throws<ArgumentNullException>();
 
             mock.Object.GetUser(null);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void GetUser_Should_Throw_Exception_When_id_Is_Empty()
-        {
-            Mock<IDataBase> mock = new Mock<IDataBase>();
-            mock.Setup(m => m.GetUser(It.Is<string>(id => id == string.Empty))).Throws<ArgumentException>();
-
-            mock.Object.GetUser(string.Empty);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void GetUser_Should_Throw_Exception_When_id_Is_Whitespaced()
-        {
-            Mock<IDataBase> mock = new Mock<IDataBase>();
-            mock.Setup(m => m.GetUser(It.Is<string>(id => string.IsNullOrWhiteSpace(id) == true))).Throws<ArgumentException>();
-
-            mock.Object.GetUser("  ");
-        }
+        }        
 
         [TestMethod]
         public void GetUser_Should_Return_An_Object_Of_Type_User()
         {
             Mock<IDataBase> mock = new Mock<IDataBase>();
-            mock.Setup(m => m.GetUser(It.IsAny<string>())).Returns(new User());
+            mock.Setup(m => m.GetUser(It.IsAny<User>())).Returns(new User());
 
-            User result = mock.Object.GetUser("test");
+            User result = mock.Object.GetUser(new User());
 
             Assert.IsInstanceOfType(result, typeof(User));
         }

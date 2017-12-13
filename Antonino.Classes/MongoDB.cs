@@ -33,10 +33,10 @@ namespace Antonino.Classes
             return orderCollection.Find(_ => _.ID == id).FirstOrDefault();
         }
 
-        public User GetUser(string id)
+        public User GetUser(User user)
         {
-            IMongoCollection<User>userCollection = database.GetCollection<User>("users");
-            return userCollection.Find(_ => _.ID == id).FirstOrDefault();
+            IMongoCollection<User> userCollection = database.GetCollection<User>("users");
+            return userCollection.Find(_ => _.ScreenName == user.ScreenName && _.Password == user.Password).FirstOrDefault();
         }
 
         public bool UpdateOrder(string id, OrderStatus status)

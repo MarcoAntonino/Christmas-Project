@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antonino.Tests", "Antonino.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antonino.Classes", "Antonino.Classes\Antonino.Classes.csproj", "{835E6C9C-DC11-4C61-A7EC-A44CEB711C99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antonino.Tests.Integration", "Antonino.Tests.Integration\Antonino.Tests.Integration.csproj", "{2810D2C5-9B40-4970-9E1E-00575B1D1B1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{835E6C9C-DC11-4C61-A7EC-A44CEB711C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{835E6C9C-DC11-4C61-A7EC-A44CEB711C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{835E6C9C-DC11-4C61-A7EC-A44CEB711C99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2810D2C5-9B40-4970-9E1E-00575B1D1B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2810D2C5-9B40-4970-9E1E-00575B1D1B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2810D2C5-9B40-4970-9E1E-00575B1D1B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2810D2C5-9B40-4970-9E1E-00575B1D1B1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
