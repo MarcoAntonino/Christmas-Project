@@ -52,6 +52,17 @@ namespace Antonino.Tests
         }
 
         [TestMethod]
+        public void Update_Order_Should_Return_True()
+        {
+            Mock<IDataBase> mock = new Mock<IDataBase>();
+            mock.Setup(m => m.UpdateOrder(It.IsAny<string>(), It.IsAny<OrderStatus>())).Returns(true);
+
+            var result = mock.Object.UpdateOrder("test", OrderStatus.Done);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
         public void GetAllOrders_Should_Return_An_IEnumerable_Of_Order()
         {
             Mock<IDataBase> mock = new Mock<IDataBase>();
