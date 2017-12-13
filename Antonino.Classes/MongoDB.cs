@@ -35,11 +35,6 @@ namespace Antonino.Classes
             throw new NotImplementedException();
         }
 
-        public bool UpdateOrder(Order product)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool UpdateOrder(string id, OrderStatus status)
         {
             throw new NotImplementedException();
