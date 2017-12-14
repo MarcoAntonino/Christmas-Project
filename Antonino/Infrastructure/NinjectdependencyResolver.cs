@@ -1,10 +1,11 @@
 ﻿using Ninject;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Antonino.Classes;
+using Antonino.Infrastructure.Abstract;
+using Antonino.Infrastructure.Concrete;
+
 
 namespace Antonino.Infrastructure
 {
@@ -21,6 +22,7 @@ namespace Antonino.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IDataBase>().To<MongoDB>();
+            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
         }
 
         public object GetService(Type serviceType)

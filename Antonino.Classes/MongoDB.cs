@@ -39,7 +39,7 @@ namespace Antonino.Classes
         {
             Get_Param_Checker(user);
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
-            return userCollection.Find(_ => _.ScreenName == user.ScreenName && _.Password == user.Password).FirstOrDefault();
+            return userCollection.Find(_ => _.Email == user.Email && _.PasswordClearText == user.PasswordClearText).FirstOrDefault();
         }
 
         public bool UpdateOrder(string id, OrderStatus status)
