@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Antonino.Classes
 {
@@ -29,18 +30,22 @@ namespace Antonino.Classes
 
         public Order GetOrder(string id)
         {
+            IdChecker(id);
             IMongoCollection<Order> orderCollection = database.GetCollection<Order>("orders");
             return orderCollection.Find(_ => _.ID == id).FirstOrDefault();
         }
 
         public User GetUser(User user)
         {
+            Get_Param_Checker(user);
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
             return userCollection.Find(_ => _.ScreenName == user.ScreenName && _.Password == user.Password).FirstOrDefault();
         }
 
         public bool UpdateOrder(string id, OrderStatus status)
         {
+            IdChecker(id);
+            OrderStatusChecker(status);
             IMongoCollection<Order> orderCollection = database.GetCollection<Order>("orders");
             var filter = Builders<Order>.Filter.Eq("_id", id);
             var update = Builders<Order>.Update.Set("status", status);
@@ -53,6 +58,24 @@ namespace Antonino.Classes
             {
                 return false;
             }
+        }
+
+        public void IdChecker(string idParam)
+        {
+            if (string.IsNullOrEmpty(idParam) || string.IsNullOrWhiteSpace(idParam))
+                throw new ArgumentException("The ID's value is not valid");            
+        }
+
+        public void OrderStatusChecker(OrderStatus statusParam)
+        {
+            if (statusParam < (OrderStatus)0 || statusParam > Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Last())
+                throw new ArgumentOutOfRangeException("The status of your order is not valid");
+        }
+
+        public void Get_Param_Checker(object objectParam)
+        {
+            if (objectParam == null)
+                throw new ArgumentNullException();            
         }
     }
 }

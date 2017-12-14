@@ -12,11 +12,11 @@ namespace Antonino.Tests
     {       
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void Update_Order_Should_Throw_Exception_When_id_Is_Null()
         {
             Mock<IDataBase> mock = new Mock<IDataBase>();
-            mock.Setup(m => m.UpdateOrder(It.Is<string>(id => id == null), It.IsAny<OrderStatus>())).Throws<ArgumentNullException>();
+            mock.Setup(m => m.UpdateOrder(It.Is<string>(id => id == null), It.IsAny<OrderStatus>())).Throws<ArgumentException>();
 
             mock.Object.UpdateOrder(null, 0);
         }
@@ -28,7 +28,7 @@ namespace Antonino.Tests
             Mock<IDataBase> mock = new Mock<IDataBase>();
             mock.Setup(m => m.UpdateOrder(It.Is<string>(id => id == string.Empty), It.IsAny<OrderStatus>())).Throws<ArgumentException>();
 
-            mock.Object.UpdateOrder(string.Empty, 0);
+            mock.Object.UpdateOrder("", 0);
         }
 
         [TestMethod]
