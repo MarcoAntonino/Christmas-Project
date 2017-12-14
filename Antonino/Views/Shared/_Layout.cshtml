@@ -17,14 +17,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nome applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Santa's NameWarehouse", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
-                    <li>@Html.ActionLink("Chi siamo", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contatti", "Contact", "Home")</li>
+                  @switch (Session["IsAdmin"])
+                  {
+                    case true:
+                          <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                          <li>@Html.ActionLink("Chi siamo", "About", "Home")</li>
+                          <li>@Html.ActionLink("Contatti", "Contact", "Home")</li>
+                      break;
+                    case false:
+                          <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                          <li>@Html.ActionLink("Chi siamo", "About", "Home")</li>
+                          <li>@Html.ActionLink("Contatti", "Contact", "Home")</li>
+                      break;
+                    default:
+                          <li>@Html.ActionLink("Login", "Login", "Users")</li>
+                      break;
+                  }
+                    
                 </ul>
             </div>
         </div>
