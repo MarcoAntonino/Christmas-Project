@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Antonino.Classes
         [BsonElement("toys")]
         public List<Toy> Toys { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:d}")]
         [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         [BsonElement("requestDate")]
         public DateTime RequestDate { get; set; }

@@ -18,15 +18,30 @@
   </thead>
   <tbody>
     @foreach (var order in Model.EntityList)
-    { 
+    {
       <tr>
-        <td>
-          @Html.DisplayFor(model => order.Kid)
-        </td>
-        <td>
-          @Html.DisplayFor(model => order.RequestDate)
-        </td>
-      </tr>      
+        @switch (Session["isAdmin"])
+        {
+          case true:                
+                <td>
+                  @Html.DisplayFor(model => order.Kid)
+                </td>
+                <td>
+                  @Html.DisplayFor(model => order.RequestDate)
+                </td>
+            break;
+          case false:
+                <td>
+                  @Html.ActionLink(order.Kid, "Details", new { id = order.ID })
+                </td>
+                <td>
+                  @Html.ActionLink(order.RequestDate.ToString("dd-MMM-yyyy"), "Details", new { id = order.ID })
+                </td>
+            break;
+          default:
+            break;
+        }       
+      </tr>
     }
   </tbody>
 </table>

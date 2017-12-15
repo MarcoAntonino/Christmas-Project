@@ -26,6 +26,13 @@ namespace Antonino.Controllers
             model.EntityList.AddRange(orders.ToList());
             return View(model);
         }
+
+        public ActionResult Details(string id)
+        {
+            var order = db.GetOrder(id);
+            Order model = order;
+            return View(model);
+        }
         
     }
 }
