@@ -1,0 +1,51 @@
+﻿@using Antonino.Classes
+@model Antonino.Models.Order
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Save", "Orders"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Order</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+              <select id="status" name="status" class="btn btn-default btn-lg dropdown-toggle">
+                @foreach(var status in Enum.GetValues(typeof(OrderStatus)))
+                {
+                  if (Model.Status.Equals(@status))
+                  {
+                        <option value="@status" selected="selected">@status</option>
+                  }
+                  else
+                  {
+                    <option value="@status">@status</option>
+                  }
+                }
+              </select>               
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>    
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

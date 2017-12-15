@@ -54,13 +54,15 @@ namespace Antonino.Classes
 
         }
 
+        // TODO controllare il test su UpdateOrder
+
         public bool UpdateOrder(string id, OrderStatus status)
         {
             IdChecker(id);
             OrderStatusChecker(status);
             IMongoCollection<Order> orderCollection = database.GetCollection<Order>("orders");
-            var filter = Builders<Order>.Filter.Eq("_id", id);
-            var update = Builders<Order>.Update.Set("status", status);
+            var filter = Builders<Order>.Filter.Eq("_id", ObjectId.Parse(id));
+            var update = Builders<Order>.Update.Set("status", (int)status);
             try
             {
                 orderCollection.UpdateOne(filter, update);

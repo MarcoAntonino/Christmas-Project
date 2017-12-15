@@ -57,6 +57,25 @@ namespace Antonino.Controllers
             }
             return returnList;
         }
+
+        public ActionResult Edit(string id)
+        {
+            Classes.Order order= db.GetOrder(id);
+            Models.Order model = new Models.Order();
+            model.ID = order.ID;
+            model.Status = order.Status;
+            return View(model);
+        }
+
+        public ActionResult Save(string id, OrderStatus status)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new MissingFieldException("Invalid Order id ");
+            }
+            bool result = db.UpdateOrder(id, status);
+            return RedirectToAction("Index", new { result = result });
+        }
         
     }
 }
