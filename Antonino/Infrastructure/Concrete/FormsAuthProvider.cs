@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
 
+
 namespace Antonino.Infrastructure.Concrete
 {
     public class FormsAuthProvider : IAuthProvider
@@ -23,7 +24,7 @@ namespace Antonino.Infrastructure.Concrete
             User loggedUser = db.GetUser(model);
             if (loggedUser != null)
             {
-                FormsAuthentication.SetAuthCookie(email, false);
+                FormsAuthentication.SetAuthCookie(email, false);                
             }
             return loggedUser;
         }

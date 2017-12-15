@@ -1,12 +1,7 @@
 ﻿using Antonino.Classes;
 using Antonino.Infrastructure.Abstract;
 using Antonino.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace Antonino.Controllers
 {
@@ -31,8 +26,11 @@ namespace Antonino.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (authProvider.Authenticate(model.Email, model.Password) != null)
+                User loggedUser = authProvider.Authenticate(model.Email, model.Password);
+                if (loggedUser != null)
                 {
+                    Session["ScreenName"] = loggedUser.ScreenName;
+                    Session["isAdmin"] = loggedUser.IsAdmin;
                     return Redirect(returnUrl ?? Url.Action("Index", "Home"));
                 }
                 else
@@ -50,6 +48,7 @@ namespace Antonino.Controllers
         [Authorize]
         public ActionResult Logout(string returnUrl)
         {
+            Session.Clear();
             authProvider.Logout();
             return RedirectToAction("Index", "Home");
         }
