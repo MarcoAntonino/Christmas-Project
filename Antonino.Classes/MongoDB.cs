@@ -35,11 +35,13 @@ namespace Antonino.Classes
             return orderCollection.Find(_ => _.ID == id).FirstOrDefault();
         }
 
+        //TODO Edit Unite Test and maibe also integration
+
         public User GetUser(User user)
         {
             Get_Param_Checker(user);
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
-            return userCollection.Find(_ => _.Email == user.Email && _.PasswordClearText == user.PasswordClearText).FirstOrDefault();
+            return userCollection.Find(_ => _.Email == user.Email && _.Password == user.Password).FirstOrDefault();
         }
 
         public bool UpdateOrder(string id, OrderStatus status)

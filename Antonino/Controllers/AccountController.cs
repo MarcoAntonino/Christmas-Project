@@ -48,9 +48,9 @@ namespace Antonino.Controllers
         }
 
         [Authorize]
-        public ActionResult Logout()
+        public ActionResult Logout(string returnUrl)
         {
-            FormsAuthentication.SignOut();
+            authProvider.Logout();
             return RedirectToAction("Index", "Home");
         }
     }

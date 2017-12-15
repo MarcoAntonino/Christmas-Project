@@ -5,6 +5,9 @@ using Antonino.Classes;
 using MongoDB.Bson;
 using System.Linq;
 
+// TODO Add example of CustomApp.config
+
+
 namespace Antonino.Tests.Integration
 {
     [TestClass]
