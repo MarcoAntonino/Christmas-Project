@@ -16,6 +16,8 @@ namespace Antonino.Models
 
         public List<OrderedToy> OrderedToys { get; set; }
 
+        public int TotalOrderdToys { get; set; }
+
         public DateTime RequestDate { get; set; }
     }
 }

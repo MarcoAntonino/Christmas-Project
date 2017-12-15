@@ -36,6 +36,7 @@ namespace Antonino.Controllers
             model.Status = order.Status;
             model.RequestDate = order.RequestDate;
             model.OrderedToys = populateToysList(order.Toys);
+            model.TotalOrderdToys = model.OrderedToys.Sum(t => t.Quantity);
             return View(model);
         }
 
