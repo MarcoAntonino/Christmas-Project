@@ -27,6 +27,8 @@
                   <li>@Html.ActionLink("Login", "Login", "Account")</li>
                   @if (Session["ScreenName"] != null)
                   {
+                      <li>@Html.ActionLink("Toys", "Index", "Toys")</li>
+                      <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
                       <li>@Html.ActionLink(Session["ScreenName"].ToString(), "Index", "Home")</li>
                       @Html.ActionLink("Sign Out", "Logout", "Account", null, new { @class = "btn btn-primary" })
                   }

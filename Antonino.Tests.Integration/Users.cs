@@ -5,6 +5,9 @@ using Antonino.Classes;
 
 namespace Antonino.Tests.Integration
 {
+
+    // TODO make tests for exceptions
+
     [TestClass]
     public class Users
     {

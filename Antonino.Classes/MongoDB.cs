@@ -19,13 +19,13 @@ namespace Antonino.Classes
         public IEnumerable<Order> GetAllOrders()
         {
             IMongoCollection<Order> orderCollection = database.GetCollection<Order>("orders");
-            return orderCollection.Find(new BsonDocument()).ToList();
+            return orderCollection.Find(new BsonDocument()).SortBy(o => o.RequestDate).ToList();
         }
 
         public IEnumerable<Toy> GetAllToys()
         {
             IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toys");
-            return toyCollection.Find(new BsonDocument()).ToList();
+            return toyCollection.Find(new BsonDocument()).SortBy(t => t.Amount).ToList();
         }
 
         public Order GetOrder(string id)

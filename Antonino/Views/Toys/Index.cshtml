@@ -1,0 +1,37 @@
+﻿@model Antonino.Models.Toys
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+  <div class="col-xs-8">
+    <h2 style="text-align:center;">Toys</h2>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var toy in Model.EntityList)
+    {
+      var colorAmount = "alert-success";
+      if (toy.Amount <= 5)
+      {
+        colorAmount = "alert-danger";
+      }
+      <tr class=@colorAmount>
+        <td>
+          @Html.DisplayFor(model => toy.Name)
+        </td>
+        <td>
+          @Html.DisplayFor(model => toy.Amount)
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

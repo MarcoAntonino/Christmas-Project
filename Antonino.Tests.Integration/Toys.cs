@@ -4,6 +4,7 @@ using AntoninoDB = Antonino.Classes.MongoDB;
 using Antonino.Classes;
 using MongoDB.Bson;
 using System.Linq;
+// TODO make tests for exceptions
 
 namespace Antonino.Tests.Integration
 {

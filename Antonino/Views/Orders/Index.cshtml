@@ -1,0 +1,33 @@
+﻿@model Antonino.Models.Orders
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+  <div class="col-xs-8">
+    <h2 style="text-align:center;">Orders</h2>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Kid</th>
+      <th>Request Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var order in Model.EntityList)
+    { 
+      <tr>
+        <td>
+          @Html.DisplayFor(model => order.Kid)
+        </td>
+        <td>
+          @Html.DisplayFor(model => order.RequestDate)
+        </td>
+      </tr>      
+    }
+  </tbody>
+</table>
+

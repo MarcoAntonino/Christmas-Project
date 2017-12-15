@@ -1,4 +1,5 @@
 ﻿using Antonino.Classes;
+using Antonino.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,12 @@ using System.Web.Mvc;
 
 namespace Antonino.Controllers
 {
-    public class OrderController : Controller
+    [Authorize]
+    public class OrdersController : Controller
     {
         private IDataBase db;
 
-        public OrderController(IDataBase dbParam)
+        public OrdersController(IDataBase dbParam)
         {
             db = dbParam;
         }
@@ -19,7 +21,10 @@ namespace Antonino.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            return View();
+            var orders = db.GetAllOrders();
+            Orders model = new Orders();
+            model.EntityList.AddRange(orders.ToList());
+            return View(model);
         }
         
     }
