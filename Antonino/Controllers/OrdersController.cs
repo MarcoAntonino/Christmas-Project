@@ -42,12 +42,13 @@ namespace Antonino.Controllers
 
         private List<OrderedToy> populateToysList (List<Toy> Toys)
         {
+            
             List<OrderedToy> returnList = new List<OrderedToy>();
             foreach (Toy requestedToy in Toys)
             {
                 if (returnList.Find(t => t.Name == requestedToy.Name) == null)
-                {
-                    returnList.Add(new OrderedToy { Name = requestedToy.Name, Quantity = 1 });
+                {                    
+                    returnList.Add(new OrderedToy { Name = requestedToy.Name, Quantity = 1, Amount = db.GetToy(requestedToy).Amount });
                 }
                 else
                 {

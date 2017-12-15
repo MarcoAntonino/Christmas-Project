@@ -14,5 +14,7 @@ namespace Antonino.Classes
         IEnumerable<Toy> GetAllToys();
 
         User GetUser(User user);
+
+        Toy GetToy(Toy toy);
     }
 }

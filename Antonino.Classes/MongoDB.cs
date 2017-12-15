@@ -44,6 +44,16 @@ namespace Antonino.Classes
             return userCollection.Find(_ => _.Email == user.Email && _.Password == user.Password).FirstOrDefault();
         }
 
+        //TODO Test GetToy
+        
+        public Toy GetToy(Toy toy)
+        {
+            Get_Param_Checker(toy);
+            IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toys");
+            return toyCollection.Find(_ => _.Name == toy.Name).FirstOrDefault();
+
+        }
+
         public bool UpdateOrder(string id, OrderStatus status)
         {
             IdChecker(id);

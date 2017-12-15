@@ -44,12 +44,13 @@
     </dl>
 </div>
 <hr />
-<h4>Detailed List</h4>
+<h4><strong>Detailed List</strong></h4>
 <table class="table">
   <thead>
     <tr>
-      <th>Quantity</th>
+      <th>Requested Quantity</th>
       <th>Toy</th>
+      <th>In Stock</th>
     </tr>
   </thead>
   <tbody>
@@ -61,6 +62,9 @@
           </td>
           <td>
             @Html.DisplayFor(model => toy.Name)
+          </td>
+          <td>
+            @Html.DisplayFor(model => toy.Amount)
           </td>
         </tr>
     }
