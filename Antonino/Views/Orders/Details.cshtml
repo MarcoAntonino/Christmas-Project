@@ -1,4 +1,5 @@
-﻿@model Antonino.Classes.Order
+﻿@model Antonino.Models.Order
+@using Antonino.Models
 
 @{
     ViewBag.Title = "Details";
@@ -33,9 +34,29 @@
       <dd>
         @Html.DisplayFor(model => model.Status)
       </dd>
-
     </dl>
 </div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Toy</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (OrderedToy toy in Model.OrderedToys)
+    {
+        <tr>
+          <td>
+            @Html.DisplayFor(model => toy.Quantity)
+          </td>
+          <td>
+            @Html.DisplayFor(model => toy.Name)
+          </td>
+        </tr>
+    }
+  </tbody>
+</table>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")

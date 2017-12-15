@@ -166,6 +166,8 @@
     <Compile Include="Infrastructure\Concrete\FormsAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectdependencyResolver.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderedToy.cs" />
     <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\Toys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

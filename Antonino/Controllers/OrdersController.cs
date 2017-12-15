@@ -21,7 +21,7 @@ namespace Antonino.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            var orders = db.GetAllOrders();
+            IEnumerable<Classes.Order> orders = db.GetAllOrders();
             Orders model = new Orders();
             model.EntityList.AddRange(orders.ToList());
             return View(model);
@@ -29,9 +29,31 @@ namespace Antonino.Controllers
 
         public ActionResult Details(string id)
         {
-            var order = db.GetOrder(id);
-            Order model = order;
+            Classes.Order order = db.GetOrder(id);
+            Models.Order model = new Models.Order();
+            model.ID = order.ID;
+            model.Kid = order.Kid;
+            model.Status = order.Status;
+            model.RequestDate = order.RequestDate;
+            model.OrderedToys = populateToysList(order.Toys);
             return View(model);
+        }
+
+        private List<OrderedToy> populateToysList (List<Toy> Toys)
+        {
+            List<OrderedToy> returnList = new List<OrderedToy>();
+            foreach (Toy requestedToy in Toys)
+            {
+                if (returnList.Find(t => t.Name == requestedToy.Name) == null)
+                {
+                    returnList.Add(new OrderedToy { Name = requestedToy.Name, Quantity = 1 });
+                }
+                else
+                {
+                    returnList.Where(t => t.Name == requestedToy.Name).ToList().ForEach(t => t.Quantity++);
+                }
+            }
+            return returnList;
         }
         
     }
