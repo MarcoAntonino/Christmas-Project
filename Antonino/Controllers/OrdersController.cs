@@ -29,15 +29,12 @@ namespace Antonino.Controllers
                 orderModel.ID = order.ID;
                 orderModel.Kid = order.Kid;
                 orderModel.Status = order.Status;
-                orderModel.RequestDate = order.RequestDate;
-                if ((bool)Session["isAdmin"])
+                orderModel.RequestDate = order.RequestDate;                
+                orderModel.OrderedToys = populateToysList(order.Toys);
+                foreach (OrderedToy toy in orderModel.OrderedToys)
                 {
-                    orderModel.OrderedToys = populateToysList(order.Toys);
-                    foreach (OrderedToy toy in orderModel.OrderedToys)
-                    {
-                        orderModel.totalCost += toy.Cost * toy.DesiredQuantity;
-                    }
-                }
+                    orderModel.totalCost += toy.Cost * toy.DesiredQuantity;
+                }                
                 model.EntityList.Add(orderModel);
             }
             return View(model);

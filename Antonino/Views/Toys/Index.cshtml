@@ -19,16 +19,20 @@
   <tbody>
     @foreach (var toy in Model.EntityList)
     {
-      var colorAmount = "alert-success";
-      if (toy.Amount <= 5)
+      var colorAmount = "enough-toys";
+      if(toy.Amount == 0)
       {
-        colorAmount = "alert-danger";
+        colorAmount = "out-of-stock";
       }
-      <tr class=@colorAmount>
-        <td>
-          @Html.DisplayFor(model => toy.Name)
+      if (toy.Amount > 0 && toy.Amount <= 5)
+      {
+        colorAmount = "last-pieces";
+      }
+      <tr>
+        <td class="@colorAmount">
+          @Html.DisplayFor(model => toy.Name, new { @class = colorAmount })
         </td>
-        <td>
+        <td class="@colorAmount">
           @Html.DisplayFor(model => toy.Amount)
         </td>
       </tr>

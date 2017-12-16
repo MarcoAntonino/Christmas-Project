@@ -12,11 +12,33 @@ body {
     color: #FEECDB; }
     .navbar-inverse .navbar-nav li a:hover {
       color: #FF7A6B; }
-  .navbar-inverse .navbar-right .form-group .btn-default {
+  .navbar-inverse .navbar-right .btn-default {
     background-color: #9B6244;
     color: #FEECDB;
     border-color: #FEECDB;
     vertical-align: middle;
-    margin-top: 5px; }
+    margin-top: 9px; }
+    .navbar-inverse .navbar-right .btn-default:hover {
+      color: #FF7A6B;
+      border-color: #FF7A6B; }
+
+.panel {
+  background-color: #9B6244; }
+  .panel .btn-primary {
+    background-color: #9B6244;
+    color: #FEECDB;
+    border-color: #FEECDB; }
+    .panel .btn-primary:hover {
+      color: #FF7A6B;
+      border-color: #FF7A6B; }
+
+.out-of-stock {
+  color: #FF7A6B; }
+
+.last-pieces {
+  color: #ffe389; }
+
+.enough-toys {
+  color: #FEECDB; }
 
 /*# sourceMappingURL=customStyle.css.map */

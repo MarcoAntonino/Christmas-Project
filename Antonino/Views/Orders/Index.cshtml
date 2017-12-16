@@ -1,4 +1,5 @@
-﻿@model Antonino.Models.Orders
+﻿@using Antonino.Models
+@model Antonino.Models.Orders
 
 @{
     ViewBag.Title = "Index";
@@ -17,7 +18,7 @@
       @switch (Session["isAdmin"])
       {
           case true:
-              <th>Total</th>
+              <th>Total $</th>
           break;
         default:
               break;
@@ -27,32 +28,40 @@
   <tbody>
     @foreach (var order in Model.EntityList)
     {
-      <tr>
-        @switch (Session["isAdmin"])
+        var colorAmount = "enough-toys";
+        foreach (OrderedToy toy in order.OrderedToys)
         {
-          case true:                
-                <td>
-                  @Html.DisplayFor(model => order.Kid)
-                </td>
-                <td>
-                  @Html.DisplayFor(model => order.RequestDate)
-                </td>
-                <td>
-                  @Html.DisplayFor(model => order.totalCost)
-                </td>
-            break;
-          case false:
-                <td>
-                  @Html.ActionLink(order.Kid, "Details", new { id = order.ID })
-                </td>
-                <td>
-                  @Html.ActionLink(order.RequestDate.ToString("dd-MMM-yyyy"), "Details", new { id = order.ID })
-                </td>
-            break;
-          default:
-            break;
-        }       
-      </tr>
+          if(toy.Amount == 0)
+          {
+                colorAmount = "out-of-stock";
+          }
+        }
+        <tr @{if (!(bool)Session["isAdmin"]) { Url.Action("Details", new { id = order.ID }); }; }>
+          @switch (Session["isAdmin"])
+          {
+            case true:
+                  <td>
+                    @Html.DisplayFor(model => order.Kid)
+                  </td>
+                  <td>
+                    @Html.DisplayFor(model => order.RequestDate)
+                  </td>
+                  <td>
+                    @Html.DisplayFor(model => order.totalCost)
+                  </td>
+              break;
+            case false:
+                  <td class="@colorAmount">
+                    @Html.ActionLink(order.Kid, "Details", new { id = order.ID }, new { @class = colorAmount })
+                  </td>
+                  <td class="@colorAmount">
+                    @Html.ActionLink(order.RequestDate.ToShortDateString(), "Details", new { id = order.ID }, new { @class = colorAmount })
+                  </td>
+              break;
+            default:
+              break;
+          }
+        </tr>        
     }
   </tbody>
 </table>

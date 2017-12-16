@@ -17,7 +17,7 @@ namespace Antonino.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "We love to bring happiness to all the world's kids!";
 
             return View();
         }
@@ -25,7 +25,7 @@ namespace Antonino.Controllers
         [Authorize]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Our contact page.";
 
             return View();
         }

@@ -24,27 +24,26 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">                  
                   <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                  <li>@Html.ActionLink("Who", "About", "Home")</li>
+                  <li>@Html.ActionLink("About", "About", "Home")</li>
                   <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
                   @if (Session["ScreenName"] != null)
                   {
                       <li>@Html.ActionLink("Toys", "Index", "Toys")</li>
                       <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
-                      <li>@Html.ActionLink(Session["ScreenName"].ToString(), "Index", "Home")</li>                      
+                                            
                   }                  
                 </ul>
               <ul class="nav navbar-nav navbar-right">
-                <div class="form-group">
-                  @if (Session["ScreenName"] != null)
-                  {
-                      @Html.ActionLink("Sign Out", "Logout", "Account", null, new { @class = "btn btn-default" })
-                  }
-                  else
-                  {
-                      @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn btn-default" })
-                  }
-                </div>                                 
-              </ul>
+                @if (Session["ScreenName"] != null)
+                {
+                    <li>@Html.ActionLink(Session["ScreenName"].ToString(), "Index", "Home")</li>                    
+                      @Html.ActionLink("Sign Out", "Logout", "Account", null, new { @class = "btn btn-default" })                    
+                }
+                else
+                {                    
+                      @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn btn-default" })                   
+                }                     
+            </ul>
             </div>
         </div>
     </div>
@@ -52,7 +51,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Santa's Warehouse</p>
         </footer>
     </div>
 

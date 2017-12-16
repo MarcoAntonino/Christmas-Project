@@ -29,15 +29,47 @@ body {
   }
 
   .navbar-right {
-    .form-group {
+    
       .btn-default {
         background-color: $color-primary;
         color: $font-primary-color;
         border-color: $font-primary-color;
         vertical-align: middle;
-        margin-top: 5px;
-      }
+        margin-top: 9px;
+
+        &:hover {
+          color: $font-secondary-color;
+          border-color: $font-secondary-color;
+        }
+      }    
+  }
+}
+
+.panel {
+  background-color: $color-primary;
+
+  .btn-primary {
+    background-color: $color-primary;
+    color: $font-primary-color;
+    border-color: $font-primary-color;
+
+    &:hover {
+      color: $font-secondary-color;
+      border-color: $font-secondary-color;
     }
   }
 }
+
+.out-of-stock {
+  color: $font-secondary-color;
+}
+
+.last-pieces {
+  color: #ffe389;
+}
+
+.enough-toys {
+  color: $font-primary-color;
+}
+
 

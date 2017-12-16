@@ -1,6 +1,7 @@
 ﻿using Antonino.Classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -18,6 +19,7 @@ namespace Antonino.Models
 
         public int TotalOrderdToys { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime RequestDate { get; set; }
 
         public decimal totalCost { get; set; }   
