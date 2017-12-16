@@ -36,7 +36,7 @@ namespace Antonino.Controllers
             model.Status = order.Status;
             model.RequestDate = order.RequestDate;
             model.OrderedToys = populateToysList(order.Toys);
-            model.TotalOrderdToys = model.OrderedToys.Sum(t => t.Quantity);
+            model.TotalOrderdToys = model.OrderedToys.Sum(t => t.DesiredQuantity);
             return View(model);
         }
 
@@ -48,11 +48,11 @@ namespace Antonino.Controllers
             {
                 if (returnList.Find(t => t.Name == requestedToy.Name) == null)
                 {                    
-                    returnList.Add(new OrderedToy { Name = requestedToy.Name, Quantity = 1, Amount = db.GetToy(requestedToy).Amount });
+                    returnList.Add(new OrderedToy { Name = requestedToy.Name, DesiredQuantity = 1, Amount = db.GetToy(requestedToy).Amount });
                 }
                 else
                 {
-                    returnList.Where(t => t.Name == requestedToy.Name).ToList().ForEach(t => t.Quantity++);
+                    returnList.Where(t => t.Name == requestedToy.Name).ToList().ForEach(t => t.DesiredQuantity++);
                 }
             }
             return returnList;
@@ -61,6 +61,14 @@ namespace Antonino.Controllers
         public ActionResult Edit(string id)
         {
             Classes.Order order= db.GetOrder(id);
+            try
+            {
+                checkStorageAvailability(order);
+            }
+            catch (NotEnoughToysInStorageException)
+            {
+                return RedirectToAction("Details", new { id = id });
+            }
             Models.Order model = new Models.Order();
             model.ID = order.ID;
             model.Status = order.Status;
@@ -75,6 +83,26 @@ namespace Antonino.Controllers
             }
             bool result = db.UpdateOrder(id, status);
             return RedirectToAction("Index", new { result = result });
+        }
+
+        private void checkStorageAvailability(Classes.Order orderToControl)
+        {           
+            Models.Order model = new Models.Order();
+            model.OrderedToys = populateToysList(orderToControl.Toys);
+            bool isOrderedEditable = true;
+            foreach (OrderedToy toy in model.OrderedToys)
+            {
+                if (toy.DesiredQuantity > toy.Amount)
+                {
+                    isOrderedEditable = false;
+                }
+            }
+
+            if (!isOrderedEditable)
+            {
+                throw new NotEnoughToysInStorageException("There are no enough toys in the storage. Check order details for more info");
+            }
+
         }
         
     }
