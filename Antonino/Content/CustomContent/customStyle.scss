@@ -61,7 +61,7 @@ body {
 }
 
 .out-of-stock {
-  color: $font-secondary-color;
+  color: $font-secondary-color;  
 }
 
 .last-pieces {
@@ -70,6 +70,18 @@ body {
 
 .enough-toys {
   color: $font-primary-color;
+}
+
+.btn-primary {
+  background-color: $color-primary;
+  color: $font-primary-color;
+  border-color: $font-primary-color;
+
+  &:hover {
+    color: $font-secondary-color;
+    border-color: $font-secondary-color;
+    background-color: $color-bodyBackground;
+  }
 }
 
 
