@@ -30,10 +30,13 @@ namespace Antonino.Controllers
                 orderModel.Kid = order.Kid;
                 orderModel.Status = order.Status;
                 orderModel.RequestDate = order.RequestDate;
-                if (Session["isAdmin"] != null)
+                if ((bool)Session["isAdmin"])
                 {
                     orderModel.OrderedToys = populateToysList(order.Toys);
-                    orderModel.totalCost = orderModel.OrderedToys.Sum(t => t.Amount);
+                    foreach (OrderedToy toy in orderModel.OrderedToys)
+                    {
+                        orderModel.totalCost += toy.Cost * toy.DesiredQuantity;
+                    }
                 }
                 model.EntityList.Add(orderModel);
             }
@@ -54,14 +57,15 @@ namespace Antonino.Controllers
         }
 
         private List<OrderedToy> populateToysList (List<Toy> Toys)
-        {
-            
+        {            
             List<OrderedToy> returnList = new List<OrderedToy>();
+            IEnumerable<Toy> catalog = db.GetAllToys();
             foreach (Toy requestedToy in Toys)
             {
                 if (returnList.Find(t => t.Name == requestedToy.Name) == null)
-                {                    
-                    returnList.Add(new OrderedToy { Name = requestedToy.Name, DesiredQuantity = 1, Amount = db.GetToy(requestedToy).Amount });
+                {
+                    Toy model = catalog.ToList().Find(t => t.Name == requestedToy.Name);
+                    returnList.Add(new OrderedToy { Name = requestedToy.Name, DesiredQuantity = 1, Amount = model.Amount , Cost = model.Cost});
                 }
                 else
                 {
