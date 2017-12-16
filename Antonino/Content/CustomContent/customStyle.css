@@ -1,7 +1,22 @@
-﻿body {
+body {
   background-color: #47423F;
-}
+  color: #FEECDB; }
 
 .navbar-inverse {
-  background-color: #9B6244;
-}
+  background-color: #9B6244; }
+  .navbar-inverse .navbar-brand {
+    color: #FEECDB; }
+    .navbar-inverse .navbar-brand:hover {
+      color: #FF7A6B; }
+  .navbar-inverse .navbar-nav li a {
+    color: #FEECDB; }
+    .navbar-inverse .navbar-nav li a:hover {
+      color: #FF7A6B; }
+  .navbar-inverse .navbar-right .form-group .btn-default {
+    background-color: #9B6244;
+    color: #FEECDB;
+    border-color: #FEECDB;
+    vertical-align: middle;
+    margin-top: 5px; }
+
+/*# sourceMappingURL=customStyle.css.map */

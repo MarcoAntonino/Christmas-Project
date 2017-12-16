@@ -1,0 +1,43 @@
+﻿@import "variables.scss";
+
+body {
+  background-color: $color-bodyBackground;
+  color: $font-primary-color;
+}
+
+.navbar-inverse {
+  background-color: $color-primary;
+
+  .navbar-brand {
+    color: $font-primary-color;
+
+    &:hover {
+      color: $font-secondary-color
+    }
+  }
+
+  .navbar-nav {
+    li {
+      a {
+        color: $font-primary-color;
+
+        &:hover {
+          color: $font-secondary-color
+        }
+      }
+    }
+  }
+
+  .navbar-right {
+    .form-group {
+      .btn-default {
+        background-color: $color-primary;
+        color: $font-primary-color;
+        border-color: $font-primary-color;
+        vertical-align: middle;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+

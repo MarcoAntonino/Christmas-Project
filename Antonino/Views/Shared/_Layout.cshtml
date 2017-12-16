@@ -30,14 +30,21 @@
                   {
                       <li>@Html.ActionLink("Toys", "Index", "Toys")</li>
                       <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
-                      <li>@Html.ActionLink(Session["ScreenName"].ToString(), "Index", "Home")</li>
-                      @Html.ActionLink("Sign Out", "Logout", "Account", null, new { @class = "btn-login" })
+                      <li>@Html.ActionLink(Session["ScreenName"].ToString(), "Index", "Home")</li>                      
+                  }                  
+                </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="form-group">
+                  @if (Session["ScreenName"] != null)
+                  {
+                      @Html.ActionLink("Sign Out", "Logout", "Account", null, new { @class = "btn btn-default" })
                   }
                   else
                   {
-                      <li>@Html.ActionLink("Login", "Login", "Account", new { @class = "btn btn-primary" })</li>
+                      @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn btn-default" })
                   }
-                </ul>
+                </div>                                 
+              </ul>
             </div>
         </div>
     </div>
