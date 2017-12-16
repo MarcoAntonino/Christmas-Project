@@ -48,29 +48,43 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Requested Quantity</th>
+      <th>Desired Quantity</th>
       <th>Toy</th>
       <th>In Stock</th>
     </tr>
   </thead>
   <tbody>
+    @{ bool isOrderEditable = true;}
     @foreach (OrderedToy toy in Model.OrderedToys)
     {
+        
         <tr>
-          <td>
+          <td id="desiredQuantiy">
             @Html.DisplayFor(model => toy.DesiredQuantity)
           </td>
           <td>
             @Html.DisplayFor(model => toy.Name)
           </td>
-          <td>
+          <td id="amount">
             @Html.DisplayFor(model => toy.Amount)
           </td>
         </tr>
+        if (toy.DesiredQuantity > toy.Amount)
+        {
+          isOrderEditable = false;
+        }
     }
   </tbody>
 </table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+  @if (isOrderEditable)
+  {
+      @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+  }else
+	{
+	    <strong>Edit button is disabled because there's not enough articles in stock for one toy ore more. Check the Detailed List for more info.</strong>   
+	}@Html.ActionLink("Back to List", "Index")
 </p>
+@Scripts.Render("~/Scripts/CustomScripts/editController.js")
+
+
