@@ -14,6 +14,14 @@
     <tr>
       <th>Kid</th>
       <th>Request Date</th>
+      @switch (Session["isAdmin"])
+      {
+          case true:
+              <th>Total</th>
+          break;
+        default:
+              break;
+      }
     </tr>
   </thead>
   <tbody>
@@ -28,6 +36,9 @@
                 </td>
                 <td>
                   @Html.DisplayFor(model => order.RequestDate)
+                </td>
+                <td>
+                  @Html.DisplayFor(model => order.totalCost)
                 </td>
             break;
           case false:

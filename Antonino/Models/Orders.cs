@@ -8,11 +8,11 @@ namespace Antonino.Models
 {
     public class Orders
     {
-        public List<Classes.Order> EntityList { get; private set; }
+        public List<Models.Order> EntityList { get; private set; }
 
         public Orders()
         {
-            EntityList = new List<Classes.Order>();
+            EntityList = new List<Models.Order>();
         }
     }
 }

@@ -12,5 +12,8 @@ namespace Antonino.Models
         public int DesiredQuantity { get; set; }
 
         public int Amount { get; set; }
+
+        public decimal Cost { get; set; }
+
     }
 }

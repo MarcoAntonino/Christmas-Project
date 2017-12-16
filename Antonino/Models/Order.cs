@@ -19,5 +19,7 @@ namespace Antonino.Models
         public int TotalOrderdToys { get; set; }
 
         public DateTime RequestDate { get; set; }
+
+        public decimal totalCost { get; set; }   
     }
 }

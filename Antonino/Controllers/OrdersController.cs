@@ -23,7 +23,20 @@ namespace Antonino.Controllers
         {
             IEnumerable<Classes.Order> orders = db.GetAllOrders();
             Orders model = new Orders();
-            model.EntityList.AddRange(orders.ToList());
+            foreach (Classes.Order order in orders)
+            {
+                Models.Order orderModel = new Models.Order();
+                orderModel.ID = order.ID;
+                orderModel.Kid = order.Kid;
+                orderModel.Status = order.Status;
+                orderModel.RequestDate = order.RequestDate;
+                if (Session["isAdmin"] != null)
+                {
+                    orderModel.OrderedToys = populateToysList(order.Toys);
+                    orderModel.totalCost = orderModel.OrderedToys.Sum(t => t.Amount);
+                }
+                model.EntityList.Add(orderModel);
+            }
             return View(model);
         }
 
