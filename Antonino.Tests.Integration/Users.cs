@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using AntoninoDB = Antonino.Classes.MongoDB;
 using Antonino.Classes;
+using System;
 
 namespace Antonino.Tests.Integration
 {
@@ -49,6 +50,17 @@ namespace Antonino.Tests.Integration
             var user = db.GetUser(test);
             
             Assert.IsNotNull(user);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), "A empty user argument was inappropriately allowed.")]
+        public void GetUser_ShouldThrow_Exception_When_User_Is_Null()
+        {
+            // arrange
+            AntoninoDB db = new AntoninoDB();
+
+            // act
+            db.GetUser(null);
         }
 
     }

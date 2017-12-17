@@ -4,6 +4,7 @@ using AntoninoDB = Antonino.Classes.MongoDB;
 using Antonino.Classes;
 using MongoDB.Bson;
 using System.Linq;
+using System;
 
 // TODO make tests for exceptions
 
@@ -54,12 +55,78 @@ namespace Antonino.Tests.Integration
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "A null id argument was inappropriately allowed.")]
+        public void GetOrder_Should_Throw_Exception_When_id_Is_Null()
+        {
+            // arrange
+            AntoninoDB db = new AntoninoDB();
+
+            // act
+            db.GetOrder(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "A empty id argument was inappropriately allowed.")]
+        public void GetOrder_Should_Throw_Exception_When_id_Is_Empty()
+        {
+            // arrange
+            AntoninoDB db = new AntoninoDB();
+
+            // act
+            db.GetOrder(string.Empty);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "A whitespaced id argument was inappropriately allowed.")]
+        public void GetOrder_Should_Throw_Exception_When_id_Is_Whitespaced()
+        {
+            // arrange
+            AntoninoDB db = new AntoninoDB();
+
+            // act
+            db.GetOrder("  ");
+        }
+
+        [TestMethod]
         public void UpdateOrder_Should_Return_True()
         {
             var db = new AntoninoDB();
             var order = db.GetOrder(testOrderId);
             order.Status = OrderStatus.InProgress;
             Assert.IsTrue(db.UpdateOrder(order.ID, order.Status));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "A null id argument was inappropriately allowed.")]
+        public void Update_Order_Should_Throw_Exception_When_id_Is_Null()
+        {
+            // arrange
+            AntoninoDB db = new AntoninoDB();
+            
+            // act
+            db.UpdateOrder(null, OrderStatus.Done);            
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "A empty id argument was inappropriately allowed.")]
+        public void Update_Order_Should_Throw_Exception_When_id_Is_Empty()
+        {
+            // arrange
+            AntoninoDB db = new AntoninoDB();
+
+            // act
+            db.UpdateOrder(string.Empty, OrderStatus.Done);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "A whitespaced id argument was inappropriately allowed.")]
+        public void Update_Order_Should_Throw_Exception_When_id_Is_Whitespaced()
+        {
+            // arrange
+            AntoninoDB db = new AntoninoDB();
+
+            // act
+            db.UpdateOrder(" ", OrderStatus.Done);
         }
     }
 }

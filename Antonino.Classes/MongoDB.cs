@@ -37,14 +37,14 @@ namespace Antonino.Classes
 
         public User GetUser(User user)
         {
-            Get_Param_Checker(user);
+            GetParamChecker(user);
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
             return userCollection.Find(_ => _.Email == user.Email && _.Password == user.Password).FirstOrDefault();
         }
                
         public Toy GetToy(Toy toy)
         {
-            Get_Param_Checker(toy);
+            GetParamChecker(toy);
             IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toys");
             return toyCollection.Find(_ => _.Name == toy.Name).FirstOrDefault();
         }
@@ -75,11 +75,11 @@ namespace Antonino.Classes
 
         public void OrderStatusChecker(OrderStatus statusParam)
         {
-            if (statusParam < (OrderStatus)0 || statusParam > Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Last())
+            if (statusParam < 0 || statusParam > Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Last())
                 throw new ArgumentOutOfRangeException("The status of your order is not valid");
         }
 
-        public void Get_Param_Checker(object objectParam)
+        public void GetParamChecker(object objectParam)
         {
             if (objectParam == null)
                 throw new ArgumentNullException();            

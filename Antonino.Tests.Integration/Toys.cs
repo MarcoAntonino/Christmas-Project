@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using AntoninoDB = Antonino.Classes.MongoDB;
 using Antonino.Classes;
 using System.Linq;
+using System;
 // TODO make tests for exceptions
 
 namespace Antonino.Tests.Integration
@@ -54,6 +55,17 @@ namespace Antonino.Tests.Integration
             var toy = db.GetToy(test);
 
             Assert.IsNotNull(toy);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), "A empty toy argument was inappropriately allowed.")]
+        public void GetToy_ShouldThrow_Exception_When_Toy_Is_Null()
+        {
+            // arrange
+            AntoninoDB db = new AntoninoDB();
+
+            // act
+            db.GetToy(null);
         }
     }
 }
