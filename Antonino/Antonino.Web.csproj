@@ -189,6 +189,7 @@
     <Content Include="CustomWeb.config" />
     <Content Include="Content\CustomContent\customStyle.scss" />
     <Content Include="Content\CustomContent\variables.scss" />
+    <Content Include="CustomWeb.config.sample" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

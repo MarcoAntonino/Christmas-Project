@@ -76,6 +76,7 @@
     <Content Include="CustomApp.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="CustomApp.config.sample" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

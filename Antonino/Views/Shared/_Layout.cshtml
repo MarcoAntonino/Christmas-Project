@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Santa's Warehouse</title>
     @Styles.Render("~/Content/css")       
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")    
     @Styles.Render("~/Content/CustomContent/customStyle.css")    
 </head>
 <body>
@@ -56,6 +55,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     
     @RenderSection("scripts", required: false)  
 </body>

@@ -1,0 +1,7 @@
+﻿<appSettings>
+  <add key="DBName" value="yourDbName" />
+  <add key="Username" value="DbUserName" />
+  <add key="Password" value="DbPsw" />
+  <add key="Host" value="ds123456.mlab.com" />
+  <add key="Port" value="12345" />
+</appSettings>
