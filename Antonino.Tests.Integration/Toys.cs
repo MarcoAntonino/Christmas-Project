@@ -2,7 +2,6 @@
 using MongoDB.Driver;
 using AntoninoDB = Antonino.Classes.MongoDB;
 using Antonino.Classes;
-using MongoDB.Bson;
 using System.Linq;
 // TODO make tests for exceptions
 
@@ -42,6 +41,19 @@ namespace Antonino.Tests.Integration
             var db = new AntoninoDB();
             var list = db.GetAllToys();
             Assert.AreEqual(1, list.Count());
+        }
+
+        [TestMethod]
+        public void GetToy_Should_Return_TestToy()
+        {
+            var db = new AntoninoDB();
+            var test = new Toy
+            {
+                Name = TOY_NAME
+            };
+            var toy = db.GetToy(test);
+
+            Assert.IsNotNull(toy);
         }
     }
 }

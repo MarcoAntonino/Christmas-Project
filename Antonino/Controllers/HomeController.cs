@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-// TODO Add example of CustomWeb.config
+﻿using System.Web.Mvc;
 
 namespace Antonino.Controllers
 {
@@ -22,7 +16,6 @@ namespace Antonino.Controllers
             return View();
         }
 
-        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Our contact page.";

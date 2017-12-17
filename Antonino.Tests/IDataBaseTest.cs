@@ -145,5 +145,26 @@ namespace Antonino.Tests
 
             Assert.IsInstanceOfType(result, typeof(User));
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void GetToy_ShouldThrow_Exception_When_Toy_Is_Null()
+        {
+            Mock<IDataBase> mock = new Mock<IDataBase>();
+            mock.Setup(m => m.GetToy(It.Is<Toy>(toy => toy == null))).Throws<ArgumentNullException>();
+
+            mock.Object.GetToy(null);
+        }
+
+        [TestMethod]
+        public void GetToy_Should_Return_An_Object_Of_Type_Toy()
+        {
+            Mock<IDataBase> mock = new Mock<IDataBase>();
+            mock.Setup(m => m.GetToy(It.IsAny<Toy>())).Returns(new Toy());
+
+            Toy result = mock.Object.GetToy(new Toy());
+
+            Assert.IsInstanceOfType(result, typeof(Toy));
+        }
     }
 }

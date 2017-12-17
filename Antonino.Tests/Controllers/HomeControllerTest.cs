@@ -35,7 +35,7 @@ namespace Antonino.Tests.Controllers
             ViewResult result = controller.About() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.AreEqual("We love to bring happiness to all the world's kids!", result.ViewBag.Message);
         }
 
         [TestMethod]

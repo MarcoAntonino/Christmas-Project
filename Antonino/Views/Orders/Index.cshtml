@@ -33,7 +33,7 @@
     @foreach (var order in Model.EntityList)
     {
         var statusClass = "enough-toys";
-        <tr @{if (!(bool)Session["isAdmin"]) { Url.Action("Details", new { id = order.ID }); }; }>
+        <tr>
           @switch (Session["isAdmin"])
           {
             case true:
