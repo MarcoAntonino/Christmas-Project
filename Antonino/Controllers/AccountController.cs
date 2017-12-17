@@ -1,6 +1,7 @@
 ﻿using Antonino.Classes;
 using Antonino.Infrastructure.Abstract;
 using Antonino.Models;
+using System;
 using System.Web.Mvc;
 
 namespace Antonino.Controllers
@@ -10,10 +11,13 @@ namespace Antonino.Controllers
         IAuthProvider authProvider;
         private IDataBase db;
 
-        public AccountController(IAuthProvider auth, IDataBase dbParam)
+        public AccountController(IAuthProvider authArg, IDataBase dbArg)
        {
-           authProvider = auth;
-           db = dbParam;
+            if (authArg == null || dbArg == null)
+                throw new ArgumentNullException();
+            
+           authProvider = authArg;
+           db = dbArg;
        }
 
         public ViewResult Login()

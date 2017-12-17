@@ -16,7 +16,7 @@ namespace Antonino.Tests
     public class MongoDBTest
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "A null idParam  was inappropriately allowed.")]
+        [ExpectedException(typeof(ArgumentException), "A null idParam argument was inappropriately allowed.")]
         public void IdChecker_Should_Throw_Exception_When_idParam_Is_Null()
         {
             // arrange
@@ -27,7 +27,7 @@ namespace Antonino.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "A empty idParam was inappropriately allowed.")]
+        [ExpectedException(typeof(ArgumentException), "A empty idParam argument was inappropriately allowed.")]
         public void IdChecker_Should_Throw_Exception_When_idParam_Is_Empty()
         {
             // arrange
@@ -38,7 +38,7 @@ namespace Antonino.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "A empty idParam was inappropriately allowed.")]
+        [ExpectedException(typeof(ArgumentException), "A empty idParam argument was inappropriately allowed.")]
         public void IdChecker_Should_Throw_Exception_When_idParam_Is_WhiteSpaced()
         {
             // arrange
@@ -49,7 +49,7 @@ namespace Antonino.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), "A out of range statusParam was inappropriately allowed.")]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), "A out of range statusParam argument was inappropriately allowed.")]
         public void OrderStatusChecker_Should_Throw_Exception_When_statusParam_is_Out_Of_Range()
         {
             // arrange
@@ -60,7 +60,7 @@ namespace Antonino.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException), "A null objectParam was inappropriately allowed.")]
+        [ExpectedException(typeof(ArgumentNullException), "A null objectParam argument was inappropriately allowed.")]
         public void GetParamChecker_Should_Throw_Exception_When_objectParam_Is_Null()
         {
             // arrange

@@ -114,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountControllerTest.cs" />
+    <Compile Include="Controllers\OrdersControllerTest.cs" />
+    <Compile Include="Controllers\ToysControllerTests.cs" />
     <Compile Include="IDataBaseTest.cs" />
     <Compile Include="Mocks\MongoConnectionMock.cs" />
     <Compile Include="MongoConnectionTest.cs" />

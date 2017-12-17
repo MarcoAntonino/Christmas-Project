@@ -13,9 +13,11 @@ namespace Antonino.Controllers
     {
         private IDataBase db;
 
-        public OrdersController(IDataBase dbParam)
+        public OrdersController(IDataBase dbArg)
         {
-            db = dbParam;
+            if (dbArg == null)
+                throw new ArgumentNullException();
+            db = dbArg;
         }
 
         // GET: Order
