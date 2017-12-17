@@ -17,7 +17,6 @@ namespace Antonino.Tests.Controllers
         {
             // Arrange
             OrdersController controller;
-            Mock<IDataBase> IDataBaseMock = new Mock<IDataBase>();
             // Act
             controller = new OrdersController(null);
         }
@@ -35,36 +34,6 @@ namespace Antonino.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
-        public void Details_Should_Return_A_View()
-        {
-            // Arrange
-            Mock<IDataBase> IDataBaseMock = new Mock<IDataBase>();
-            OrdersController controller = new OrdersController(IDataBaseMock.Object);
-            string idTest = ObjectId.GenerateNewId().ToString();
-
-            // Act
-            ViewResult result = controller.Details(idTest) as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
-        public void Edit_Should_Return_A_View()
-        {
-            // Arrange
-            Mock<IDataBase> IDataBaseMock = new Mock<IDataBase>();
-            OrdersController controller = new OrdersController(IDataBaseMock.Object);
-            string idTest = ObjectId.GenerateNewId().ToString();
-
-            // Act
-            ViewResult result = controller.Edit(idTest) as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
+        }        
     }
 }

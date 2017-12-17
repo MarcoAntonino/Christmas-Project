@@ -15,9 +15,7 @@ namespace Antonino.Controllers
 
         public OrdersController(IDataBase dbArg)
         {
-            if (dbArg == null)
-                throw new ArgumentNullException();
-            db = dbArg;
+            db = dbArg ?? throw new ArgumentNullException();
         }
 
         // GET: Order

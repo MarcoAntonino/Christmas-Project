@@ -14,9 +14,9 @@ namespace Antonino.Controllers
 
         private IDataBase db;
 
-        public ToysController(IDataBase dbParam)
+        public ToysController(IDataBase dbArg)
         {
-            db = dbParam;
+            db = dbArg ?? throw new ArgumentNullException();
         }
         // GET: Toy
         public ActionResult Index()
