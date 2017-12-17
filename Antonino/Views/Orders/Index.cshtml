@@ -1,4 +1,5 @@
 ﻿@using Antonino.Models
+@using Antonino.Classes
 @model Antonino.Models.Orders
 
 @{
@@ -20,22 +21,18 @@
           case true:
               <th>Total $</th>
           break;
+        case false:
+              <th>Status</th>
+          break;
         default:
-              break;
+          break;
       }
     </tr>
   </thead>
   <tbody>
     @foreach (var order in Model.EntityList)
     {
-        var colorAmount = "enough-toys";
-        foreach (OrderedToy toy in order.OrderedToys)
-        {
-          if(toy.Amount == 0)
-          {
-                colorAmount = "out-of-stock";
-          }
-        }
+        var statusClass = "enough-toys";
         <tr @{if (!(bool)Session["isAdmin"]) { Url.Action("Details", new { id = order.ID }); }; }>
           @switch (Session["isAdmin"])
           {
@@ -51,12 +48,33 @@
                   </td>
               break;
             case false:
-                  <td>
-                    @Html.ActionLink(order.Kid, "Details", new { id = order.ID }, new { @class = colorAmount })
-                  </td>
-                  <td>
-                    @Html.ActionLink(order.RequestDate.ToShortDateString(), "Details", new { id = order.ID }, new { @class = colorAmount })
-                  </td>
+              switch ((int)order.Status)
+              {
+                case 0:
+                  statusClass = "status-in-progress";
+                  foreach (OrderedToy toy in order.OrderedToys)
+                  {
+                    if (toy.Amount < toy.DesiredQuantity)
+                    {
+                      statusClass = "out-of-stock";
+                    }
+                  }
+                  break;
+                case 1:
+                  statusClass = "status-ready";
+                  break;
+                default:
+                  break;
+              }
+              <td>
+                @Html.ActionLink(order.Kid, "Details", new { id = order.ID }, new { @class = statusClass })
+              </td>
+              <td>
+                @Html.ActionLink(order.RequestDate.ToShortDateString(), "Details", new { id = order.ID }, new { @class = statusClass })
+              </td>
+              <td>
+                @Html.ActionLink(order.Status.ToString(), "Details", new { id = order.ID }, new { @class = statusClass })
+              </td>
               break;
             default:
               break;

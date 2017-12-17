@@ -84,4 +84,26 @@ body {
   }
 }
 
+.btn-default {
+  background-color: $font-primary-color$color-primary;
+  color: $color-primary;
+  border-color: $font-primary-color;
+
+  &:hover {
+    color: $font-secondary-color;
+    border-color: $font-secondary-color;
+  }
+}
+
+a:hover {
+  color: #fff;
+}
+
+.status-in-progress {
+  color: #ffe389;
+}
+
+.status-ready {
+  color: #70a470;
+}
 

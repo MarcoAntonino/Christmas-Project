@@ -50,4 +50,21 @@ body {
     border-color: #FF7A6B;
     background-color: #47423F; }
 
+.btn-default {
+  background-color: #FEECDB #9B6244;
+  color: #9B6244;
+  border-color: #FEECDB; }
+  .btn-default:hover {
+    color: #FF7A6B;
+    border-color: #FF7A6B; }
+
+a:hover {
+  color: #fff; }
+
+.status-in-progress {
+  color: #ffe389; }
+
+.status-ready {
+  color: #70a470; }
+
 /*# sourceMappingURL=customStyle.css.map */
