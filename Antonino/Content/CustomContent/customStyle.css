@@ -67,4 +67,7 @@ a:hover {
 .status-ready {
   color: #70a470; }
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #393533; }
+
 /*# sourceMappingURL=customStyle.css.map */

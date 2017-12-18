@@ -107,3 +107,7 @@ a:hover {
   color: #70a470;
 }
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: darken($color-bodyBackground, 5%);
+}
+
