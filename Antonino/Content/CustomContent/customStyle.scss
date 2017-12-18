@@ -13,7 +13,7 @@ body {
 
     &:hover {
       color: $font-secondary-color
-    }
+    }    
   }
 
   .navbar-nav {
@@ -29,19 +29,19 @@ body {
   }
 
   .navbar-right {
-    
-      .btn-default {
-        background-color: $color-primary;
-        color: $font-primary-color;
-        border-color: $font-primary-color;
-        vertical-align: middle;
-        margin-top: 9px;
 
-        &:hover {
-          color: $font-secondary-color;
-          border-color: $font-secondary-color;
-        }
-      }    
+    .btn-default {
+      background-color: $color-primary;
+      color: $font-primary-color;
+      border-color: $font-primary-color;
+      vertical-align: middle;
+      margin-top: 9px;
+
+      &:hover {
+        color: $font-secondary-color;
+        border-color: $font-secondary-color;
+      }
+    }
   }
 }
 
