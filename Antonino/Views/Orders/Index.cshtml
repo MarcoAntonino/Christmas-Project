@@ -66,13 +66,13 @@
                 default:
                   break;
               }
-              <td>
+              <td onclick="location.href='@(Url.Action("Details", "Orders", new { id = order.ID }))'" style="cursor:pointer">
                 @Html.ActionLink(order.Kid, "Details", new { id = order.ID }, new { @class = statusClass })
               </td>
-              <td>
+              <td onclick="location.href='@(Url.Action("Details", "Orders", new { id = order.ID }))'" style="cursor:pointer">
                 @Html.ActionLink(order.RequestDate.ToShortDateString(), "Details", new { id = order.ID }, new { @class = statusClass })
               </td>
-              <td>
+              <td onclick="location.href='@(Url.Action("Details", "Orders", new { id = order.ID }))'" style="cursor:pointer">
                 @Html.ActionLink(order.Status.ToString(), "Details", new { id = order.ID }, new { @class = statusClass })
               </td>
               break;
